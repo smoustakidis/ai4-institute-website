@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI4 - Next-Gen AI Solutions & Inclusive Education</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .hero-illustration { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .stats-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); }
+        .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-radius: 8px; z-index: 50; }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .nav-link { transition: color 0.3s ease; }
+        .nav-link:hover { color: #10b981; }
+        .education-dashboard { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 20px; padding: 20px; color: white; }
+        .progress-bar { background: #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .progress-fill { background: linear-gradient(90deg, #10b981, #3b82f6); height: 8px; border-radius: 10px; }
+        .learning-card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .pie-chart { width: 200px; height: 200px; border-radius: 50%; background: conic-gradient(#3b82f6 0deg 158deg, #8b5cf6 158deg 316deg, #10b981 316deg 360deg); }
+        .mobile-menu { display: none; }
+        .mobile-menu.active { display: block; }
+        @media (max-width: 768px) {
+            .desktop-nav { display: none; }
+            .mobile-nav { display: block; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900">AI4</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block desktop-nav">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" onclick="showPage('home')" class="nav-link text-gray-900 font-medium">Home</a>
+                        
+                        <div class="dropdown relative">
+                            <a href="#" class="nav-link text-gray-700 hover:text-gray-900 font-medium flex items-center">
+                                Services <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <div class="dropdown-menu w-48 py-2">
+                                <a href="#" onclick="showPage('data-analytics')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Data Analytics</a>
+                                <a href="#" onclick="showPage('ai-research')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">AI Research</a>
+                                <a href="#" onclick="showPage('technology-solutions')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Technology Solutions</a>
+                            </div>
+                        </div>
+
+                        <a href="#" onclick="showPage('inclusive-learning')" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Inclusive Learning</a>
+                        
+                        <div class="dropdown relative">
+                            <a href="#" class="nav-link text-gray-700 hover:text-gray-900 font-medium flex items-center">
+                                Portfolio <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                            </a>
+                            <div class="dropdown-menu w-48 py-2">
+                                <a href="#" onclick="showPage('agriculture')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Agriculture</a>
+                                <a href="#" onclick="showPage('healthcare')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Healthcare</a>
+                                <a href="#" onclick="showPage('smart-cities')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Smart Cities</a>
+                                <a href="#" onclick="showPage('elearning')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">e-Learning</a>
+                            </div>
+                        </div>
+
+                        <a href="#" onclick="showPage('about')" class="nav-link text-gray-700 hover:text-gray-900 font-medium">About</a>
+                        <a href="#" onclick="showPage('contact')" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Contact</a>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" onclick="showPage('contact')" class="text-gray-700 hover:text-gray-900 font-medium">Sign in</a>
+                    <a href="#" onclick="showPage('contact')" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium transition duration-200">Request demo</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden mobile-nav">
+                    <button onclick="toggleMobileMenu()" class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div class="mobile-menu md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" onclick="showPage('home')" class="block px-3 py-2 text-gray-900 font-medium">Home</a>
+                <a href="#" onclick="showPage('data-analytics')" class="block px-3 py-2 text-gray-700">Data Analytics</a>
+                <a href="#" onclick="showPage('ai-research')" class="block px-3 py-2 text-gray-700">AI Research</a>
+                <a href="#" onclick="showPage('technology-solutions')" class="block px-3 py-2 text-gray-700">Technology Solutions</a>
+                <a href="#" onclick="showPage('inclusive-learning')" class="block px-3 py-2 text-gray-700">Inclusive Learning</a>
+                <a href="#" onclick="showPage('agriculture')" class="block px-3 py-2 text-gray-700">Agriculture</a>
+                <a href="#" onclick="showPage('healthcare')" class="block px-3 py-2 text-gray-700">Healthcare</a>
+                <a href="#" onclick="showPage('smart-cities')" class="block px-3 py-2 text-gray-700">Smart Cities</a>
+                <a href="#" onclick="showPage('elearning')" class="block px-3 py-2 text-gray-700">e-Learning</a>
+                <a href="#" onclick="showPage('about')" class="block px-3 py-2 text-gray-700">About</a>
+                <a href="#" onclick="showPage('contact')" class="block px-3 py-2 text-gray-700">Contact</a>
+                <div class="border-t border-gray-200 pt-3 mt-3">
+                    <a href="#" onclick="showPage('contact')" class="block px-3 py-2 text-gray-700">Sign in</a>
+                    <a href="#" onclick="showPage('contact')" class="block px-3 py-2 bg-green-500 text-white rounded-lg mx-3 text-center">Request demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Homepage -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-br from-blue-50 to-indigo-100 py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                            A new era in <span class="text-blue-600">AI solutions</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                            The first and only platform to grow your innovation while increasing your team's efficiency with world-class AI technology and data analytics.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#" onclick="showPage('contact')" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition duration-200 text-center">
+                                Request demo
+                            </a>
+                            <a href="#" onclick="showPage('about')" class="border-2 border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-4 rounded-lg font-semibold text-lg transition duration-200 text-center">
+                                Learn more
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-illustration rounded-3xl p-8 relative overflow-hidden">
+                        <div class="relative z-10">
+                            <div class="bg-white rounded-2xl p-6 shadow-xl mb-4">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h3 class="font-semibold text-gray-900">AI Analytics Dashboard</h3>
+                                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">Data Processing</span>
+                                        <span class="text-sm font-semibold text-green-600">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 95%"></div>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">Model Accuracy</span>
+                                        <span class="text-sm font-semibold text-blue-600">98.5%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 98%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-blue-500 rounded-xl p-4 text-white">
+                                    <i class="fas fa-brain text-2xl mb-2"></i>
+                                    <p class="text-sm font-medium">AI Models</p>
+                                    <p class="text-2xl font-bold">150+</p>
+                                </div>
+                                <div class="bg-green-500 rounded-xl p-4 text-white">
+                                    <i class="fas fa-chart-line text-2xl mb-2"></i>
+                                    <p class="text-sm font-medium">Accuracy</p>
+                                    <p class="text-2xl font-bold">99.2%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="stats-card rounded-2xl p-8">
+                        <div class="text-4xl font-bold text-green-400 mb-2">7.5 hrs</div>
+                        <div class="text-gray-300">processing time saved per project</div>
+                    </div>
+                    <div class="stats-card rounded-2xl p-8">
+                        <div class="text-4xl font-bold text-blue-400 mb-2">300+ hrs</div>
+                        <div class="text-gray-300">research time saved per year</div>
+                    </div>
+                    <div class="stats-card rounded-2xl p-8">
+                        <div class="text-4xl font-bold text-purple-400 mb-2">€750k+</div>
+                        <div class="text-gray-300">value generated per client</div>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <p class="text-gray-400 mb-8">Working with leading organizations</p>
+                    <div class="flex justify-center items-center space-x-12 opacity-60">
+                        <div class="text-white font-bold text-xl">University Partners</div>
+                        <div class="text-white font-bold text-xl">Research Institutes</div>
+                        <div class="text-white font-bold text-xl">Tech Companies</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Overview -->
+        <section class="py-20 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-white mb-4">
+                        Automate <span class="text-green-400">AI solutions</span>
+                    </h2>
+                    <p class="text-xl text-gray-300">Scale up your capabilities with AI4 intelligent systems.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 rounded-2xl p-8 service-card">
+                        <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-bar text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Data Analytics</h3>
+                        <p class="text-gray-300 mb-6">Transform raw data into actionable insights with advanced AI algorithms and predictive analytics.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Process 10x more data vs other tools
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Real-time analytics and reporting
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Predictive modeling capabilities
+                            </li>
+                        </ul>
+                        <a href="#" onclick="showPage('data-analytics')" class="text-green-400 font-semibold hover:text-green-300 transition duration-200">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-2xl p-8 service-card">
+                        <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-microscope text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">AI Research</h3>
+                        <p class="text-gray-300 mb-6">Cutting-edge research solutions pushing the boundaries of AI applications across industries.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Advanced research methodologies
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Cross-domain AI applications
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Publication-quality results
+                            </li>
+                        </ul>
+                        <a href="#" onclick="showPage('ai-research')" class="text-green-400 font-semibold hover:text-green-300 transition duration-200">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="bg-gray-800 rounded-2xl p-8 service-card">
+                        <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-cogs text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Technology Solutions</h3>
+                        <p class="text-gray-300 mb-6">Custom AI integrations and technological frameworks designed for scalability and efficiency.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Scalable system architecture
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Custom AI model deployment
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <i class="fas fa-check text-green-400 mr-3"></i>
+                                Enterprise-grade security
+                            </li>
+                        </ul>
+                        <a href="#" onclick="showPage('technology-solutions')" class="text-green-400 font-semibold hover:text-green-300 transition duration-200">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Teaser -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Impact Across Industries</h2>
+                    <p class="text-xl text-gray-600">Transforming sectors with innovative AI solutions</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center group cursor-pointer" onclick="showPage('agriculture')">
+                        <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition duration-200">
+                            <i class="fas fa-leaf text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Agriculture</h3>
+                        <p class="text-gray-600">Smart farming solutions with AI-powered crop monitoring and yield optimization.</p>
+                    </div>
+
+                    <div class="text-center group cursor-pointer" onclick="showPage('healthcare')">
+                        <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition duration-200">
+                            <i class="fas fa-heartbeat text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Healthcare</h3>
+                        <p class="text-gray-600">Advanced diagnostic tools and patient care optimization through AI analytics.</p>
+                    </div>
+
+                    <div class="text-center group cursor-pointer" onclick="showPage('smart-cities')">
+                        <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition duration-200">
+                            <i class="fas fa-city text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Cities</h3>
+                        <p class="text-gray-600">Urban planning and infrastructure optimization with intelligent systems.</p>
+                    </div>
+
+                    <div class="text-center group cursor-pointer" onclick="showPage('elearning')">
+                        <div class="w-20 h-20 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 transition duration-200">
+                            <i class="fas fa-graduation-cap text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">e-Learning</h3>
+                        <p class="text-gray-600">Personalized education platforms with adaptive learning technologies.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Data Analytics Page -->
+    <div id="data-analytics" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Data Analytics Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Transform your raw data into actionable insights with our advanced AI-powered analytics platform. Make data-driven decisions that drive real business outcomes.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Intelligent Data Processing</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our AI algorithms process massive datasets in real-time, identifying patterns and trends that traditional analytics miss. Get insights that matter, faster than ever before.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>Real-time Processing:</strong> Process millions of data points in seconds</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>Predictive Analytics:</strong> Forecast trends with 95%+ accuracy</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>Automated Insights:</strong> AI-generated reports and recommendations</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Performance Metrics</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Data Processing Speed</span>
+                                    <span class="font-semibold">10x faster</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Prediction Accuracy</span>
+                                    <span class="font-semibold">95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Cost Reduction</span>
+                                    <span class="font-semibold">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-chart-line text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Trend Analysis</h3>
+                        <p class="text-gray-600">Identify emerging patterns and market trends before your competitors do.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-brain text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Machine Learning</h3>
+                        <p class="text-gray-600">Self-improving algorithms that get smarter with every data point.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-shield-alt text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Data Security</h3>
+                        <p class="text-gray-600">Enterprise-grade security with complete data privacy and compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- AI Research Page -->
+    <div id="ai-research" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">AI-Driven Research</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Pioneering the future of artificial intelligence through cutting-edge research and innovative applications across multiple domains.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Research Areas</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-dna text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Computational Biology</h4>
+                                    <p class="text-gray-600 text-sm">AI models for drug discovery and genomic analysis</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-eye text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Computer Vision</h4>
+                                    <p class="text-gray-600 text-sm">Advanced image recognition and analysis systems</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-comments text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Natural Language Processing</h4>
+                                    <p class="text-gray-600 text-sm">Language understanding and generation models</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Breakthrough Research</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our research team collaborates with leading universities and research institutions to push the boundaries of what's possible with AI technology.</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-purple-600">50+</div>
+                                <div class="text-gray-600">Research Papers</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-blue-600">15+</div>
+                                <div class="text-gray-600">Patents Filed</div>
+                            </div>
+                        </div>
+                        <a href="#" onclick="showPage('contact')" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-200">
+                            Collaborate With Us
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-3xl p-12 text-white">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold mb-4">Research Publications</h2>
+                        <p class="text-gray-300">Our latest contributions to the scientific community</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-gray-800 rounded-xl p-6">
+                            <h3 class="font-bold mb-2">Deep Learning for Medical Imaging</h3>
+                            <p class="text-gray-300 text-sm mb-4">Published in Nature Machine Intelligence, 2024</p>
+                            <span class="text-green-400 text-sm">Cited 150+ times</span>
+                        </div>
+                        <div class="bg-gray-800 rounded-xl p-6">
+                            <h3 class="font-bold mb-2">AI-Powered Agricultural Optimization</h3>
+                            <p class="text-gray-300 text-sm mb-4">Published in Science Robotics, 2023</p>
+                            <span class="text-green-400 text-sm">Cited 200+ times</span>
+                        </div>
+                        <div class="bg-gray-800 rounded-xl p-6">
+                            <h3 class="font-bold mb-2">Explainable AI for Smart Cities</h3>
+                            <p class="text-gray-300 text-sm mb-4">Published in IEEE Transactions, 2024</p>
+                            <span class="text-green-400 text-sm">Cited 75+ times</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Technology Solutions Page -->
+    <div id="technology-solutions" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-green-50 to-blue-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Technology Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Custom AI integrations and technological frameworks designed for scalability, efficiency, and seamless business growth.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Enterprise AI Integration</h2>
+                        <p class="text-lg text-gray-600 mb-6">Transform your business operations with custom AI solutions that integrate seamlessly with your existing infrastructure and scale with your growth.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-server text-blue-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Cloud-native architecture for maximum scalability</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-lock text-green-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Enterprise-grade security and compliance</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-rocket text-purple-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Rapid deployment and integration</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Technology Stack</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                <i class="fab fa-python text-blue-600 text-2xl mb-2"></i>
+                                <p class="font-semibold">Python/ML</p>
+                            </div>
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <i class="fas fa-cloud text-green-600 text-2xl mb-2"></i>
+                                <p class="font-semibold">Cloud Native</p>
+                            </div>
+                            <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                <i class="fas fa-database text-purple-600 text-2xl mb-2"></i>
+                                <p class="font-semibold">Big Data</p>
+                            </div>
+                            <div class="text-center p-4 bg-orange-50 rounded-lg">
+                                <i class="fas fa-microchip text-orange-600 text-2xl mb-2"></i>
+                                <p class="font-semibold">Edge AI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-3xl p-12 text-white mb-16">
+                    <h2 class="text-3xl font-bold text-center mb-12">Our Development Process</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold">1</span>
+                            </div>
+                            <h3 class="font-bold mb-2">Discovery</h3>
+                            <p class="text-gray-300 text-sm">Understand your business needs and technical requirements</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold">2</span>
+                            </div>
+                            <h3 class="font-bold mb-2">Design</h3>
+                            <p class="text-gray-300 text-sm">Create custom AI architecture and system design</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold">3</span>
+                            </div>
+                            <h3 class="font-bold mb-2">Develop</h3>
+                            <p class="text-gray-300 text-sm">Build and train AI models with rigorous testing</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl font-bold">4</span>
+                            </div>
+                            <h3 class="font-bold mb-2">Deploy</h3>
+                            <p class="text-gray-300 text-sm">Seamless integration with ongoing support</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-mobile-alt text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile AI Apps</h3>
+                        <p class="text-gray-600">Native mobile applications with on-device AI processing for real-time insights.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-globe text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Web Platforms</h3>
+                        <p class="text-gray-600">Scalable web applications with AI-powered features and intuitive interfaces.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-plug text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">API Solutions</h3>
+                        <p class="text-gray-600">RESTful APIs for seamless integration of AI capabilities into existing systems.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Inclusive Learning Page -->
+    <div id="inclusive-learning" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">AI-Empowered Inclusive Learning</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Revolutionary education platform designed specifically for people with intellectual disabilities, powered by adaptive AI technology that personalizes learning experiences.</p>
+                </div>
+
+                <!-- Hero Section with Mockup -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Personalized Learning Journey</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our AI-powered platform adapts to each learner's unique needs, providing personalized content, pacing, and support to ensure successful learning outcomes for everyone.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-heart text-red-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Empathetic AI Assistant</h3>
+                                    <p class="text-gray-600">Friendly AI companion that provides encouragement and guidance</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-chart-line text-blue-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Progress Tracking</h3>
+                                    <p class="text-gray-600">Visual progress indicators and achievement celebrations</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-puzzle-piece text-green-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Adaptive Content</h3>
+                                    <p class="text-gray-600">Learning materials that adjust to individual abilities and preferences</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="education-dashboard">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-2xl font-bold">Welcome back!</h3>
+                                <div class="flex items-center space-x-4">
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold">80%</div>
+                                        <div class="text-sm opacity-75">Overall Score</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold">5</div>
+                                        <div class="text-sm opacity-75">Lessons Completed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-16 h-16 bg-white rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                                        <i class="fas fa-user text-white text-xl"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="font-semibold mb-2">Current Topics:</div>
+                                    <div class="flex items-center space-x-2 text-sm">
+                                        <span class="bg-green-500 px-2 py-1 rounded">✓ Animals</span>
+                                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded">Daily Tasks</span>
+                                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded">Money</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="learning-card">
+                                <h4 class="font-bold text-gray-900 mb-4">Learning Progress</h4>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-600">This Week</span>
+                                        <span class="text-sm font-semibold text-blue-600">↗ +15%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-200 rounded-full">
+                                        <div class="h-2 bg-blue-500 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="learning-card">
+                                <h4 class="font-bold text-gray-900 mb-4">Skills Distribution</h4>
+                                <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                                    <div>
+                                        <div class="w-8 h-8 bg-blue-500 rounded-full mx-auto mb-1"></div>
+                                        <div>Core 31%</div>
+                                    </div>
+                                    <div>
+                                        <div class="w-8 h-8 bg-purple-500 rounded-full mx-auto mb-1"></div>
+                                        <div>Writing 44%</div>
+                                    </div>
+                                    <div>
+                                        <div class="w-8 h-8 bg-green-500 rounded-full mx-auto mb-1"></div>
+                                        <div>Life Skills 25%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Learning Example -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl mb-16">
+                    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Interactive Learning Experience</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="bg-gray-50 rounded-2xl p-8">
+                            <div class="text-center mb-6">
+                                <div class="text-sm text-gray-600 mb-2">Question 2 of 5</div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mb-8">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                                    Identify the shape 
+                                    <i class="fas fa-volume-up text-blue-500 ml-2 cursor-pointer"></i>
+                                </h3>
+                                <div class="w-32 h-32 mx-auto mb-6" style="background: linear-gradient(135deg, #8b5cf6, #a855f7); clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                                
+                                <div class="grid grid-cols-3 gap-4 mb-6">
+                                    <button class="bg-blue-100 hover:bg-blue-200 px-4 py-3 rounded-lg font-semibold transition duration-200">Square</button>
+                                    <button class="bg-green-100 hover:bg-green-200 px-4 py-3 rounded-lg font-semibold transition duration-200">Triangle</button>
+                                    <button class="bg-gray-100 hover:bg-gray-200 px-4 py-3 rounded-lg font-semibold transition duration-200">Circle</button>
+                                </div>
+                                
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition duration-200">Next</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-blue-50 rounded-2xl p-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-robot text-white text-xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="bg-white rounded-lg p-4 mb-4">
+                                        <p class="text-gray-900 font-medium">Try counting the corners of the shape!</p>
+                                        <div class="flex items-center mt-2">
+                                            <i class="fas fa-volume-up text-blue-500 mr-2 cursor-pointer"></i>
+                                            <span class="text-sm text-gray-600">Need help?</span>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-gray-700 font-medium">AI Learning Assistant</p>
+                                        <p class="text-sm text-gray-600">Always here to help you succeed!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Platform Features -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-user-friends text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Inclusive Design</h3>
+                        <p class="text-gray-600">Interface designed with accessibility experts and the disability community for maximum usability.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-brain text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Adaptive AI</h3>
+                        <p class="text-gray-600">Machine learning algorithms that understand and adapt to individual learning patterns and preferences.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-trophy text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Achievement System</h3>
+                        <p class="text-gray-600">Celebrating every success with personalized rewards and progress recognition systems.</p>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center text-white">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Transform Learning?</h2>
+                    <p class="text-xl mb-8 opacity-90">Join us in creating a more inclusive educational future with AI-powered learning solutions.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#" onclick="showPage('contact')" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">
+                            Request Demo
+                        </a>
+                        <a href="#" onclick="showPage('contact')" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-200">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Portfolio Pages -->
+    <div id="agriculture" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-green-50 to-blue-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Smart Agriculture Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Revolutionizing farming with AI-powered crop monitoring, yield optimization, and precision agriculture technologies.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Precision Agriculture</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our AI systems analyze satellite imagery, soil data, and weather patterns to optimize crop yields while minimizing resource usage.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-satellite text-green-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Satellite-based crop monitoring</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-tint text-blue-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Smart irrigation optimization</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-leaf text-green-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Disease detection and prevention</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Impact Results</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Yield Increase</span>
+                                    <span class="font-semibold text-green-600">+35%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-green-500" style="width: 35%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Water Usage Reduction</span>
+                                    <span class="font-semibold text-blue-600">-25%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-blue-500" style="width: 25%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Pesticide Reduction</span>
+                                    <span class="font-semibold text-purple-600">-40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-purple-500" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-camera text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Drone Monitoring</h3>
+                        <p class="text-gray-600">Automated drone flights for real-time crop health assessment and field mapping.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-thermometer-half text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Weather Intelligence</h3>
+                        <p class="text-gray-600">Advanced weather prediction models for optimal planting and harvesting decisions.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-chart-area text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Yield Prediction</h3>
+                        <p class="text-gray-600">AI-powered forecasting for crop yields and market planning optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="healthcare" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Healthcare AI Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Advanced diagnostic tools and patient care optimization through cutting-edge AI analytics and machine learning.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Medical Imaging Analysis</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span>X-Ray Analysis</span>
+                                <span class="text-green-600 font-semibold">99.2% Accuracy</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>MRI Interpretation</span>
+                                <span class="text-blue-600 font-semibold">98.7% Accuracy</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>CT Scan Detection</span>
+                                <span class="text-purple-600 font-semibold">97.9% Accuracy</span>
+                            </div>
+                            <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                                <p class="text-sm text-green-800"><strong>Early Detection:</strong> Our AI identifies abnormalities 40% faster than traditional methods</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Diagnostic Excellence</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our AI-powered diagnostic tools assist healthcare professionals in making faster, more accurate diagnoses while reducing patient wait times.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-eye text-blue-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Computer Vision Analysis</h3>
+                                    <p class="text-gray-600">Advanced image recognition for medical imaging</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-green-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Real-time Processing</h3>
+                                    <p class="text-gray-600">Instant analysis and reporting capabilities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-shield-alt text-purple-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">HIPAA Compliant</h3>
+                                    <p class="text-gray-600">Full compliance with healthcare privacy regulations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-3xl p-12 text-white mb-16">
+                    <h2 class="text-3xl font-bold text-center mb-12">Healthcare Partnerships</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-400 mb-2">150+</div>
+                            <div class="text-gray-300">Healthcare Facilities</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-green-400 mb-2">50,000+</div>
+                            <div class="text-gray-300">Patients Served</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-purple-400 mb-2">95%</div>
+                            <div class="text-gray-300">Doctor Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-stethoscope text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Patient Monitoring</h3>
+                        <p class="text-gray-600 text-sm">Continuous vital sign analysis and alert systems</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-pills text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Drug Discovery</h3>
+                        <p class="text-gray-600 text-sm">AI-accelerated pharmaceutical research and development</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-brain text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Predictive Analytics</h3>
+                        <p class="text-gray-600 text-sm">Early warning systems for health complications</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-user-md text-orange-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Clinical Decision Support</h3>
+                        <p class="text-gray-600 text-sm">AI-powered treatment recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="smart-cities" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-purple-50 to-blue-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Smart Cities Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Urban planning and infrastructure optimization with intelligent systems for sustainable, efficient city management.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Intelligent Urban Management</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our smart city solutions integrate IoT sensors, AI analytics, and predictive modeling to optimize urban services and improve quality of life.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-traffic-light text-red-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Smart traffic management systems</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-lightbulb text-yellow-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Intelligent street lighting</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-recycle text-green-500 mr-4 text-xl"></i>
+                                <span class="text-lg">Waste management optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">City Performance Metrics</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Energy Efficiency</span>
+                                    <span class="font-semibold text-green-600">+45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-green-500" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Traffic Flow Improvement</span>
+                                    <span class="font-semibold text-blue-600">+30%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-blue-500" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span>Emergency Response Time</span>
+                                    <span class="font-semibold text-purple-600">-35%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill bg-purple-500" style="width: 35%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-car text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Smart Mobility</h3>
+                        <p class="text-gray-600 text-sm">AI-powered transportation optimization and route planning</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-bolt text-yellow-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Energy Management</h3>
+                        <p class="text-gray-600 text-sm">Smart grid optimization and renewable energy integration</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-shield-alt text-red-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Public Safety</h3>
+                        <p class="text-gray-600 text-sm">Predictive policing and emergency response coordination</p>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+                        <i class="fas fa-cloud text-green-500 text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Environmental Monitoring</h3>
+                        <p class="text-gray-600 text-sm">Air quality tracking and pollution control systems</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-white text-center">
+                    <h2 class="text-3xl font-bold mb-4">Building Tomorrow's Cities Today</h2>
+                    <p class="text-xl mb-8 opacity-90">Partner with us to create sustainable, intelligent urban environments.</p>
+                    <a href="#" onclick="showPage('contact')" class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">
+                        Start Your Smart City Journey
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="elearning" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-orange-50 to-red-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">e-Learning Solutions</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Personalized education platforms with adaptive learning technologies that transform traditional education delivery.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Learning Analytics</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span>Course Completion Rate</span>
+                                <span class="text-green-600 font-semibold">+85%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>Student Engagement</span>
+                                <span class="text-blue-600 font-semibold">+70%</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>Learning Efficiency</span>
+                                <span class="text-purple-600 font-semibold">+60%</span>
+                            </div>
+                            <div class="mt-6 p-4 bg-orange-50 rounded-lg">
+                                <p class="text-sm text-orange-800"><strong>Adaptive Learning:</strong> Content adjusts in real-time based on student performance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Personalized Learning</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our AI-powered learning platform adapts to each student's learning style, pace, and preferences for optimal educational outcomes.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-user-graduate text-orange-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Adaptive Content Delivery</h3>
+                                    <p class="text-gray-600">Dynamic curriculum based on learning progress</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-chart-line text-blue-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Performance Analytics</h3>
+                                    <p class="text-gray-600">Real-time insights into learning patterns</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-comments text-green-500 mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">AI Tutoring Assistant</h3>
+                                    <p class="text-gray-600">24/7 personalized learning support</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-brain text-purple-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Intelligent Assessment</h3>
+                        <p class="text-gray-600">AI-powered testing that adapts difficulty based on student knowledge and provides detailed feedback.</p>
+                        <div class="mt-4 text-sm text-gray-500">
+                            <span class="font-semibold">Features:</span> Auto-grading, plagiarism detection, performance insights
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-gamepad text-orange-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Gamified Learning</h3>
+                        <p class="text-gray-600">Interactive learning experiences with game mechanics to increase engagement and motivation.</p>
+                        <div class="mt-4 text-sm text-gray-500">
+                            <span class="font-semibold">Features:</span> Badges, leaderboards, progress tracking, rewards
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <i class="fas fa-mobile-alt text-blue-500 text-3xl mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Learning</h3>
+                        <p class="text-gray-600">Learn anywhere, anytime with our responsive mobile platform and offline content access.</p>
+                        <div class="mt-4 text-sm text-gray-500">
+                            <span class="font-semibold">Features:</span> Offline sync, mobile apps, responsive design
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-3xl p-12 text-white">
+                    <h2 class="text-3xl font-bold text-center mb-12">Educational Impact</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-4xl font-bold text-orange-400 mb-2">1M+</div>
+                            <div class="text-gray-300">Students Reached</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-blue-400 mb-2">500+</div>
+                            <div class="text-gray-300">Educational Institutions</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-green-400 mb-2">10,000+</div>
+                            <div class="text-gray-300">Courses Delivered</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-purple-400 mb-2">95%</div>
+                            <div class="text-gray-300">Student Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">About AI4</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">We blend cutting-edge AI with deep domain expertise, forging the path for advancements in health, agriculture, and technology sectors.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                        <p class="text-lg text-gray-600 mb-6">At AI4, we are the decisive factor behind your success, providing comprehensive AI solutions that redefine efficiency and innovation. Our team's collaborative spirit, underpinned by robust research and bespoke analytics, ensures that we are not just service providers but your partners in transformation.</p>
+                        <p class="text-lg text-gray-600 mb-6">Embracing challenges as opportunities, AI4 is dedicated to elevating your operational potential through strategic AI implementation and tailored technological support.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" onclick="showPage('contact')" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-200">
+                                Join Our Team
+                            </a>
+                            <a href="#" onclick="showPage('contact')" class="border-2 border-gray-300 hover:border-gray-400 text-gray-700 px-6 py-3 rounded-lg font-semibold transition duration-200">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Company Values</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-lightbulb text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Innovation</h4>
+                                    <p class="text-gray-600 text-sm">Pushing boundaries with cutting-edge AI research and development</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-users text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Collaboration</h4>
+                                    <p class="text-gray-600 text-sm">Working together to achieve extraordinary results</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-heart text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-2">Impact</h4>
+                                    <p class="text-gray-600 text-sm">Creating meaningful change in industries and communities</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 rounded-3xl p-12 text-white mb-16">
+                    <h2 class="text-3xl font-bold text-center mb-12">Our Team</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-user text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Research Scientists</h3>
+                            <p class="text-gray-300">PhD-level researchers from top universities worldwide</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-code text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">AI Engineers</h3>
+                            <p class="text-gray-300">Expert developers with deep machine learning expertise</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-chart-line text-white text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Domain Experts</h3>
+                            <p class="text-gray-300">Industry specialists across healthcare, agriculture, and technology</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-blue-600 mb-2">2018</div>
+                        <div class="text-gray-600">Founded</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-green-600 mb-2">50+</div>
+                        <div class="text-gray-600">Team Members</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-purple-600 mb-2">200+</div>
+                        <div class="text-gray-600">Projects Completed</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-orange-600 mb-2">25+</div>
+                        <div class="text-gray-600">Countries Served</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ready to transform your business with AI? Get in touch with our team to discuss your project and explore innovative solutions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-8">Get in Touch</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Address</h3>
+                                    <p class="text-gray-600">Athens, Greece<br>Technology & Innovation Hub</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Email</h3>
+                                    <p class="text-gray-600">info@ai4.gr<br>research@ai4.gr</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900 mb-1">Phone</h3>
+                                    <p class="text-gray-600">+30 210 123 4567<br>Available 9 AM - 6 PM (EET)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-12">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition duration-200">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white hover:bg-blue-600 transition duration-200">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-white hover:bg-gray-900 transition duration-200">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl p-8 shadow-xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interest</label>
+                                <select id="service" name="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select a service</option>
+                                    <option value="data-analytics">Data Analytics</option>
+                                    <option value="ai-research">AI Research</option>
+                                    <option value="technology-solutions">Technology Solutions</option>
+                                    <option value="inclusive-learning">Inclusive Learning Platform</option>
+                                    <option value="agriculture">Agriculture Solutions</option>
+                                    <option value="healthcare">Healthcare AI</option>
+                                    <option value="smart-cities">Smart Cities</option>
+                                    <option value="elearning">e-Learning</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tell us about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition duration-200">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="mt-20">
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white text-center">
+                        <h2 class="text-3xl font-bold mb-4">Ready to Start Your AI Journey?</h2>
+                        <p class="text-xl mb-8 opacity-90">Let's discuss how AI4 can transform your business operations and drive innovation.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="#" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-200">
+                                Schedule a Demo
+                            </a>
+                            <a href="#" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-200">
+                                Download Brochure
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold">AI4</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Transforming industries with cutting-edge AI solutions and innovative technology.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('data-analytics')" class="text-gray-300 hover:text-white transition duration-200">Data Analytics</a></li>
+                        <li><a href="#" onclick="showPage('ai-research')" class="text-gray-300 hover:text-white transition duration-200">AI Research</a></li>
+                        <li><a href="#" onclick="showPage('technology-solutions')" class="text-gray-300 hover:text-white transition duration-200">Technology Solutions</a></li>
+                        <li><a href="#" onclick="showPage('inclusive-learning')" class="text-gray-300 hover:text-white transition duration-200">Inclusive Learning</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Portfolio</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('agriculture')" class="text-gray-300 hover:text-white transition duration-200">Agriculture</a></li>
+                        <li><a href="#" onclick="showPage('healthcare')" class="text-gray-300 hover:text-white transition duration-200">Healthcare</a></li>
+                        <li><a href="#" onclick="showPage('smart-cities')" class="text-gray-300 hover:text-white transition duration-200">Smart Cities</a></li>
+                        <li><a href="#" onclick="showPage('elearning')" class="text-gray-300 hover:text-white transition duration-200">e-Learning</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="showPage('about')" class="text-gray-300 hover:text-white transition duration-200">About Us</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="text-gray-300 hover:text-white transition duration-200">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">Careers</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-200">News</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 AI4. All rights reserved. Empowering the future with artificial intelligence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all page sections
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            // Close mobile menu if open
+            const mobileMenu = document.querySelector('.mobile-menu');
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const mobileButton = document.querySelector('.mobile-nav button');
+            
+            if (!mobileMenu.contains(event.target) && !mobileButton.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
